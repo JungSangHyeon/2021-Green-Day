@@ -6,4 +6,7 @@
     <!--  Main Menu  -->
     <string name="main_menu_track_list">Track List</string>
     <string name="main_menu_favorite">Favorite</string>
+
+    <!--  Item Track  -->
+    <string name="artwork">Artwork</string>
 </resources>

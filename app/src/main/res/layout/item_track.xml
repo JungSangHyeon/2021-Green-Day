@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <ImageView
+        android:id="@+id/artwork"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/space_normal"
+        android:contentDescription="@string/artwork"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/star" />
+
+    <TextView
+        android:id="@+id/track_name"
+        style="@style/Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/space_normal"
+        android:padding="@dimen/space_normal"
+        app:layout_constraintBottom_toTopOf="@+id/collection_name"
+        app:layout_constraintEnd_toStartOf="@+id/favorite"
+        app:layout_constraintStart_toEndOf="@+id/artwork"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Track Name" />
+
+    <TextView
+        android:id="@+id/collection_name"
+        style="@style/Description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/space_normal"
+        android:paddingHorizontal="@dimen/space_normal"
+        app:layout_constraintBottom_toTopOf="@+id/artist_name"
+        app:layout_constraintEnd_toStartOf="@+id/favorite"
+        app:layout_constraintStart_toEndOf="@+id/artwork"
+        app:layout_constraintTop_toBottomOf="@+id/track_name"
+        tools:text="Collection Name" />
+
+    <TextView
+        android:id="@+id/artist_name"
+        style="@style/Description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/space_normal"
+        android:paddingHorizontal="@dimen/space_normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/favorite"
+        app:layout_constraintStart_toEndOf="@+id/artwork"
+        app:layout_constraintTop_toBottomOf="@+id/collection_name"
+        tools:text="Artist Name" />
+
+    <ToggleButton
+        android:id="@+id/favorite"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="@dimen/space_normal"
+        android:background="@drawable/favorite"
+        android:textOff=""
+        android:textOn=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

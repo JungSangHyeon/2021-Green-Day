@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextView">
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+    <style name="Title" parent="TextView">
+        <item name="android:textSize">@dimen/text_big</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="Description" parent="TextView">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+</resources>
