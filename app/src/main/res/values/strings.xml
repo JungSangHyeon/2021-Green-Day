@@ -1,3 +1,9 @@
 <resources>
+
+    <!--  App  -->
     <string name="app_name">Green Day</string>
+
+    <!--  Main Menu  -->
+    <string name="main_menu_track_list">Track List</string>
+    <string name="main_menu_favorite">Favorite</string>
 </resources>
