@@ -7,7 +7,7 @@ import retrofit2.http.Query;
 public interface API {
 
     @GET("/search?")
-    Call<Response> search (
+    Call<TrackSearchResult> search(
             @Query("term") String term,
             @Query("entity") String entity,
             @Query("offset") int offset,

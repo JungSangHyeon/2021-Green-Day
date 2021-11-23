@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/space_normal"
             android:paddingHorizontal="@dimen/space_normal"
-            android:text="@{track.artistName}"
+            android:text="@{track.artistName+track.trackId}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/favorite"
             app:layout_constraintStart_toEndOf="@+id/artwork"

@@ -5,10 +5,12 @@ import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableArrayList;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.greenday.network.Track;
+import com.example.greenday.viewmodel.ItunesViewModel;
 
 public class Module {
 
@@ -21,4 +23,5 @@ public class Module {
     public static void loadData(RecyclerView recyclerView, ObservableArrayList<Track> tracks) {
         ((TrackAdapter)recyclerView.getAdapter()).updateTrack();
     }
+
 }

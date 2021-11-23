@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Response {
+public class TrackSearchResult {
     private int resultCount;
     private ArrayList<Track> results;
 }
