@@ -1,5 +1,7 @@
 package com.example.greenday.network;
 
+import java.util.ArrayList;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,5 +9,5 @@ import lombok.Setter;
 @Setter
 public class Response {
     private int resultCount;
-    private Results[] results;
+    private ArrayList<Track> results;
 }
