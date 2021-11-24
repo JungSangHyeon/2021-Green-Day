@@ -1,6 +1,5 @@
 package com.example.greenday.list;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -22,7 +21,7 @@ public class TrackAdapter extends RecyclerView.Adapter<TrackViewHolder> {
 
     public TrackAdapter(ItunesViewModel model) {
         this.model=model;
-        this.tracks = model.getTracks();
+        this.tracks = model.getTrackList();
     }
 
     @NotNull
@@ -35,7 +34,7 @@ public class TrackAdapter extends RecyclerView.Adapter<TrackViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull @NotNull TrackViewHolder holder, int position) {
         holder.setData(tracks.get(position));
-        if (position == getItemCount() - 10) model.get();
+        if (position == getItemCount() - 10) model.loadTrackList(getItemCount(), 20);
     }
 
     public void updateTrack(){

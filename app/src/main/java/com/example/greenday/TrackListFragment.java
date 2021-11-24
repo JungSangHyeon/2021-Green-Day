@@ -17,11 +17,11 @@ public class TrackListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ItunesViewModel model = new ViewModelProvider(this).get(ItunesViewModel.class);
-        model.get();
+        ItunesViewModel model = new ViewModelProvider(requireActivity()).get(ItunesViewModel.class);
+        model.loadTrackList(0, 20);
 
         FragmentTrackListBinding binding = FragmentTrackListBinding.inflate(inflater, container, false);
-        binding.setTrackList(model.getTracks());
+        binding.setTrackList(model.getTrackList());
         binding.title.setText(R.string.main_menu_track_list);
         binding.trackList.setAdapter(new TrackAdapter(model));
 
