@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/trackListFragment"
-        android:name="com.example.greenday.TrackListFragment"
+        android:name="com.example.greenday.view.TrackListFragment"
         android:label="@string/main_menu_track_list"
         tools:layout="@layout/fragment_track_list" />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.example.greenday.FavoriteFragment"
+        android:name="com.example.greenday.view.FavoriteFragment"
         android:label="@string/main_menu_favorite"
         tools:layout="@layout/fragment_favorite" /><action android:id="@+id/action_global_trackListFragment" app:destination="@id/trackListFragment"/><action android:id="@+id/action_global_favoriteFragment" app:destination="@id/favoriteFragment"/>
 </navigation>

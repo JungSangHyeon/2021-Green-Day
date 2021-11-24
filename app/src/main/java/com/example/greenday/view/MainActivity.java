@@ -1,4 +1,4 @@
-package com.example.greenday;
+package com.example.greenday.view;
 
 import android.os.Bundle;
 
@@ -7,7 +7,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.greenday.db.FavoriteDatabase;
+import com.example.greenday.R;
+import com.example.greenday.database.FavoriteDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

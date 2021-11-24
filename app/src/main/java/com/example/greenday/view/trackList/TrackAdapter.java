@@ -1,4 +1,4 @@
-package com.example.greenday.list;
+package com.example.greenday.view.trackList;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,20 +8,20 @@ import androidx.databinding.ObservableArrayList;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenday.databinding.ItemTrackBinding;
-import com.example.greenday.network.Track;
-import com.example.greenday.viewmodel.ItunesViewModel;
+import com.example.greenday.iTunes.Track;
+import com.example.greenday.viewmodel.IntTrackListViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
 public class TrackAdapter extends RecyclerView.Adapter<TrackViewHolder> {
 
     private final ObservableArrayList<Track> tracks;
-    private final ItunesViewModel model;
+    private final IntTrackListViewModel model;
     private int sizeBeforeUpdate;
 
-    public TrackAdapter(ItunesViewModel model) {
+    public TrackAdapter(IntTrackListViewModel model) {
         this.model=model;
-        this.tracks = model.getTrackList();
+        this.tracks = model.getList();
     }
 
     @NotNull
@@ -34,7 +34,7 @@ public class TrackAdapter extends RecyclerView.Adapter<TrackViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull @NotNull TrackViewHolder holder, int position) {
         holder.setData(tracks.get(position));
-        if (position == getItemCount() - 10) model.loadTrackList(getItemCount(), 20);
+        if (position == getItemCount() - 10) model.load(getItemCount(), 20);
     }
 
     public void updateTrack(){

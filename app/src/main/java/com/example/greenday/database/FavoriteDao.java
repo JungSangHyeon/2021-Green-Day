@@ -1,4 +1,4 @@
-package com.example.greenday.db;
+package com.example.greenday.database;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

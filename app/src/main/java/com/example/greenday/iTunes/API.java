@@ -1,7 +1,4 @@
-package com.example.greenday.network;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.example.greenday.iTunes;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

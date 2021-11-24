@@ -1,4 +1,4 @@
-package com.example.greenday.network;
+package com.example.greenday.iTunes;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.example.greenday;
+package com.example.greenday.view;
 
 import android.os.Bundle;
 
@@ -9,20 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.greenday.R;
 import com.example.greenday.databinding.FragmentTrackListBinding;
-import com.example.greenday.list.TrackAdapter;
-import com.example.greenday.viewmodel.ItunesViewModel;
+import com.example.greenday.view.trackList.TrackAdapter;
+import com.example.greenday.viewmodel.FavoriteViewModel;
+import com.example.greenday.viewmodel.IntTrackListViewModel;
 
-public class TrackListFragment extends Fragment {
+public class FavoriteFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ItunesViewModel model = new ViewModelProvider(requireActivity()).get(ItunesViewModel.class);
-        model.loadTrackList(0, 20);
+        IntTrackListViewModel model = new ViewModelProvider(requireActivity()).get(FavoriteViewModel.class);
 
         FragmentTrackListBinding binding = FragmentTrackListBinding.inflate(inflater, container, false);
-        binding.setTrackList(model.getTrackList());
-        binding.title.setText(R.string.main_menu_track_list);
+        binding.setTrackList(model.getList());
+        binding.title.setText(R.string.main_menu_favorite);
         binding.trackList.setAdapter(new TrackAdapter(model));
 
         return binding.getRoot();

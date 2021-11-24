@@ -1,15 +1,15 @@
-package com.example.greenday.viewmodel;
+package com.example.greenday.repository;
 
 import android.util.Log;
 
 import androidx.databinding.ObservableArrayList;
 
-import com.example.greenday.db.FavoriteDao;
-import com.example.greenday.db.FavoriteDatabase;
-import com.example.greenday.network.API;
-import com.example.greenday.network.Network;
-import com.example.greenday.network.Track;
-import com.example.greenday.network.TrackSearchResult;
+import com.example.greenday.database.FavoriteDao;
+import com.example.greenday.database.FavoriteDatabase;
+import com.example.greenday.iTunes.API;
+import com.example.greenday.iTunes.Network;
+import com.example.greenday.iTunes.Track;
+import com.example.greenday.iTunes.TrackSearchResult;
 
 import lombok.Getter;
 import retrofit2.Call;

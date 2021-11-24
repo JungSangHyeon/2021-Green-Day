@@ -7,7 +7,7 @@
 
         <variable
             name="track"
-            type="com.example.greenday.network.Track" />
+            type="com.example.greenday.iTunes.Track" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,10 +72,12 @@
 
         <ToggleButton
             android:id="@+id/favorite"
+            changeFavorite="@{track}"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginEnd="@dimen/space_normal"
             android:background="@drawable/favorite"
+            android:checked="@{track.favorite}"
             android:textOff=""
             android:textOn=""
             app:layout_constraintBottom_toBottomOf="parent"

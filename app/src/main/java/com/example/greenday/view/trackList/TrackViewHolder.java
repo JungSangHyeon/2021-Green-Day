@@ -1,9 +1,9 @@
-package com.example.greenday.list;
+package com.example.greenday.view.trackList;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenday.databinding.ItemTrackBinding;
-import com.example.greenday.network.Track;
+import com.example.greenday.iTunes.Track;
 
 public class TrackViewHolder extends RecyclerView.ViewHolder {
 

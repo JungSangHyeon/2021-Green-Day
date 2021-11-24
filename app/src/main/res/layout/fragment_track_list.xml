@@ -5,7 +5,7 @@
 
     <data>
         <import type="androidx.databinding.ObservableArrayList" />
-        <import type="com.example.greenday.network.Track" />
+        <import type="com.example.greenday.iTunes.Track" />
 
         <variable
             name="trackList"
@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".TrackListFragment">
+        tools:context=".view.TrackListFragment">
 
         <TextView
             android:id="@+id/title"
