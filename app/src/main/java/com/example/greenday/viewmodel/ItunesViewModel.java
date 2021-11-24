@@ -10,51 +10,40 @@ import com.example.greenday.network.Network;
 import com.example.greenday.network.Track;
 import com.example.greenday.network.TrackSearchResult;
 
-import java.util.ArrayList;
-
 import lombok.Getter;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Retrofit;
 
 @Getter
 public class ItunesViewModel extends ViewModel {
 
-    Retrofit retrofit = Network.getInstance();
-    API api = retrofit.create(API.class);
-    ArrayList<Integer> trackIds = new ArrayList<>();
-    int offset = 0;
-    boolean ready = true;
-    ObservableArrayList<Track> observableArrayList = new ObservableArrayList<>();
+    private final API api = Network.getInstance().create(API.class);
+    private final ObservableArrayList<Track> tracks = new ObservableArrayList<>();
+    private int offset = 0;
+    private boolean ready = true;
 
-    public void get(){
-        ready=false;
-        new Thread(){
+    public void get() {
+        ready = false;
+        new Thread() {
             @Override
             public void run() {
-                api.search("greenday", "song", offset, 20).enqueue(new Callback<TrackSearchResult>() {
-                    @Override
-                    public void onResponse(Call<TrackSearchResult> call, retrofit2.Response<TrackSearchResult> response) {
-                        TrackSearchResult r = response.body();
-                        for(Track track : r.getResults()){
-                            if(!trackIds.contains(track.getTrackId())){
-                                trackIds.add(track.getTrackId());
-                                observableArrayList.add(track);
+                api.search("greenday", "song", offset, 20)
+                        .enqueue(new Callback<TrackSearchResult>() {
+                            @Override
+                            public void onResponse(Call<TrackSearchResult> call, retrofit2.Response<TrackSearchResult> response) {
+                                tracks.addAll(response.body().getResults());
+                                ready = true;
                             }
-                        }
-                        ready = true;
-                    }
-                    @Override
-                    public void onFailure(Call<TrackSearchResult> call, Throwable t) {
-                        Log.e("FAIL", t.getMessage());
-                        ready = true;
-                    }
-                });
-                offset+=20;
+                            @Override
+                            public void onFailure(Call<TrackSearchResult> call, Throwable t) {
+                                Log.e("FAIL", t.getMessage());
+                                ready = true;
+                            }
+                        });
+                offset += 20;
             }
         }.start();
     }
-
 
     public boolean ready() {
         return ready;

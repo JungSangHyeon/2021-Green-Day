@@ -4,19 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <import type="androidx.databinding.ObservableArrayList" />
         <import type="com.example.greenday.network.Track" />
 
         <variable
             name="trackList"
             type="ObservableArrayList&lt;Track&gt;" />
-        <variable
-            name="viewmodel"
-            type="com.example.greenday.viewmodel.ItunesViewModel" />
-        <variable
-            name="module"
-            type="com.example.greenday.list.Module" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
