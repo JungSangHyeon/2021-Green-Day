@@ -34,9 +34,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<TrackViewHolder> imple
     }
 
     @Override
-    public void datasetChanged() {
-        this.notifyDataSetChanged();
-    }
+    public void datasetChanged() { this.notifyDataSetChanged(); }
 
     @Override
     public int getItemCount() { return tracks.size(); }

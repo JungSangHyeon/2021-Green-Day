@@ -6,9 +6,6 @@
     <data>
 
         <variable
-            name="viewmodel"
-            type="com.example.greenday.viewmodel.TrackListViewModel" />
-        <variable
             name="track"
             type="com.example.greenday.iTunes.Track" />
     </data>

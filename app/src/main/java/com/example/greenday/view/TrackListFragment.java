@@ -20,7 +20,7 @@ public class TrackListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         TrackListViewModel model = new ViewModelProvider(requireActivity()).get(TrackListViewModel.class);
         model.getTrackList().clear();
-        model.loadTrackList(0,20);
+        model.loadTrackList(0);
 
         FragmentTrackListBinding binding = FragmentTrackListBinding.inflate(inflater, container, false);
         binding.setTrackList(model.getTrackList());

@@ -11,6 +11,15 @@ import com.example.greenday.R;
 import com.example.greenday.database.FavoriteDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * TODO
+ * 1. REfactoring 이름, 패키지...
+ * 2. Fragment 바꿀 때 마다 업뎃시키는것 없애기
+ * 3. Favorite 변경 반영하는 좋은 방법 찾기.
+ * 4. HILT
+ * 5. Network RX Java
+ * 5. 이쁜 UI
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override

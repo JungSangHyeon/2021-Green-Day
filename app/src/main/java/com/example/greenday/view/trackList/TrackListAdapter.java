@@ -15,6 +15,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class TrackListAdapter extends RecyclerView.Adapter<TrackViewHolder> implements Adapter {
 
+    private static final int LOADING_MARGIN = 10;
+
     private final ObservableArrayList<Track> tracks;
     private final TrackListViewModel model;
     private int sizeBeforeUpdate;
@@ -34,7 +36,7 @@ public class TrackListAdapter extends RecyclerView.Adapter<TrackViewHolder> impl
     @Override
     public void onBindViewHolder(@NonNull @NotNull TrackViewHolder holder, int position) {
         holder.setData(tracks.get(position));
-        if (position == getItemCount() - 10) model.loadTrackList(getItemCount(), 20);
+        if (position == getItemCount() - LOADING_MARGIN) model.loadTrackList(getItemCount());
     }
 
     @Override
