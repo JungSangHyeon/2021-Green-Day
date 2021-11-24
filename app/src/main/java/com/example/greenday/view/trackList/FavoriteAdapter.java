@@ -16,8 +16,10 @@ import org.jetbrains.annotations.NotNull;
 public class FavoriteAdapter extends RecyclerView.Adapter<TrackViewHolder> implements Adapter{
 
     private final ObservableArrayList<Track> tracks;
+    private final TrackListViewModel model;
 
     public FavoriteAdapter(TrackListViewModel model) {
+        this.model=model;
         this.tracks = model.getFavorites();
     }
 
@@ -25,7 +27,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<TrackViewHolder> imple
     @Override
     public TrackViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ItemTrackBinding binding = ItemTrackBinding.inflate(LayoutInflater.from(parent.getContext()), parent,false);
-        return new TrackViewHolder(binding);
+        return new TrackViewHolder(binding, model);
     }
 
     @Override

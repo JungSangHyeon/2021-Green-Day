@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableList;
 
+import com.example.greenday.database.Favorite;
 import com.example.greenday.database.FavoriteDao;
 import com.example.greenday.database.FavoriteDatabase;
 import com.example.greenday.iTunes.API;
@@ -28,6 +29,23 @@ public class Repository { // 일단 메인에서 만들어서 스태택주입
         dao = FavoriteDatabase.getDB().favoriteDao();
         trackList = new ObservableArrayList<>();
         favorite = new ObservableArrayList<>();
+    }
+
+    public void favoriteChange(Track track, boolean checked){
+        Track trackInTrackList = find(trackList, track.getTrackId());
+        if(trackInTrackList!=null) trackInTrackList.setFavorite(checked);
+
+        if(checked){
+            favorite.add(track);
+        }else{
+            Track trackInFavorite = find(favorite, track.getTrackId());
+            if(trackInFavorite!=null) favorite.remove(trackInFavorite);
+        }
+
+        Favorite f = new Favorite();
+        f.trackId=track.getTrackId();
+        if(checked) FavoriteDatabase.SERVICE.execute(()->FavoriteDatabase.getDB().favoriteDao().insert(f));
+        else FavoriteDatabase.SERVICE.execute(()->FavoriteDatabase.getDB().favoriteDao().delete(f));
     }
 
     public void loadTrackList(int offset) {
@@ -80,5 +98,12 @@ public class Repository { // 일단 메인에서 만들어서 스태택주입
 
             }
         }.start();
+    }
+
+    public Track find(ObservableArrayList<Track> list, int id){
+        for(Track track : list){
+            if(track.getTrackId()==id) return track;
+        }
+        return null;
     }
 }

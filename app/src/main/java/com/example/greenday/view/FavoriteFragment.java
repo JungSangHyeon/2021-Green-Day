@@ -19,14 +19,11 @@ public class FavoriteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         TrackListViewModel model = new ViewModelProvider(requireActivity()).get(TrackListViewModel.class);
-        model.getFavorites().clear();
-        model.loadFavorite();
 
         FragmentTrackListBinding binding = FragmentTrackListBinding.inflate(inflater, container, false);
         binding.setTrackList(model.getFavorites());
         binding.title.setText(R.string.main_menu_favorite);
         binding.trackList.setAdapter(new FavoriteAdapter(model));
-
         return binding.getRoot();
     }
 }

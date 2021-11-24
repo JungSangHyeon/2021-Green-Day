@@ -13,12 +13,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * TODO
- * 1. REfactoring 이름, 패키지...
- * 2. Fragment 바꿀 때 마다 업뎃시키는것 없애기
- * 3. Favorite 변경 반영하는 좋은 방법 찾기.
  * 4. HILT
  * 5. Network RX Java
  * 5. 이쁜 UI
+ *
+ * ListAdapter를 사용해서 페이버릿 notifydatachange 안 부르게 하기
+ *
+ * 시간 남으면
+ * 1. 화면 전환 할 때 Fragment 새로 안 만들고 계속 쓰는게 좋지 않을까? - 왜 Fra씨는 Launch Mode가 없지
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
         FavoriteDatabase.init(this);
 
-        // TODO 왠지 모르겠는데, 얘가 Fragment를 새로 만드네. 이전꺼 쓰는게 좋겠지?
         BottomNavigationView menu = this.findViewById(R.id.menu);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
         NavController mainNavController = navHostFragment.getNavController();

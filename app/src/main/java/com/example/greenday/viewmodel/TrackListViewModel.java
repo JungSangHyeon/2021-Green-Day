@@ -18,8 +18,11 @@ public class TrackListViewModel extends ViewModel {
         repository = new Repository();
         trackList = repository.getTrackList();
         favorites = repository.getFavorite();
+        loadTrackList(0);
+        loadFavorite();
     }
 
     public void loadTrackList(int offset) { repository.loadTrackList(offset); }
     public void loadFavorite() { repository.loadFavorites(); }
+    public void favoriteChange(Track track, boolean checked) { repository.favoriteChange(track, checked); }
 }

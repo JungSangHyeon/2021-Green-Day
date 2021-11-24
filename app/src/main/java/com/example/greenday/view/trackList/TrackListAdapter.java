@@ -30,7 +30,7 @@ public class TrackListAdapter extends RecyclerView.Adapter<TrackViewHolder> impl
     @Override
     public TrackViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ItemTrackBinding binding = ItemTrackBinding.inflate(LayoutInflater.from(parent.getContext()), parent,false);
-        return new TrackViewHolder(binding);
+        return new TrackViewHolder(binding, model);
     }
 
     @Override
