@@ -6,20 +6,21 @@ import androidx.lifecycle.ViewModel;
 import com.example.greenday.iTunes.Track;
 import com.example.greenday.repository.RepositoryImpl;
 
-public class TrackListViewModel extends ViewModel implements IntTrackListViewModel {
+import lombok.Getter;
+
+@Getter
+public class TrackListViewModel extends ViewModel {
 
     private final RepositoryImpl repository;
-    private final ObservableArrayList<Track> trackList;
+    private final ObservableArrayList<Track> trackList, favorites;
 
     public TrackListViewModel(){
         repository = new RepositoryImpl();
         trackList = repository.getTrackList();
-        load(0, 20);
+        favorites = repository.getFavorite();
     }
 
-    @Override
-    public void load(int offset, int limit) { repository.loadTrackList(offset, limit); }
-
-    @Override
-    public ObservableArrayList<Track> getList() { return trackList; }
+    public void loadTrackList(int offset, int limit) { repository.loadTrackList(offset, limit); }
+    public void loadFavorite() { repository.loadFavorites(); }
+    public void changeFavorite(Track track) { repository.changeFavorite(track); }
 }

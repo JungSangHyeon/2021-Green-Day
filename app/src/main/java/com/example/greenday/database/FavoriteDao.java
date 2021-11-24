@@ -1,5 +1,6 @@
 package com.example.greenday.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -10,8 +11,8 @@ import java.util.List;
 @Dao
 public interface FavoriteDao {
 
-    @Query("SELECT * FROM favorite LIMIT :limit OFFSET :offset")
-    List<Favorite> get(int offset, int limit);
+    @Query("SELECT * FROM favorite")
+    List<Favorite> get();
 
     @Query("SELECT COUNT(*) FROM favorite WHERE track_id = :id")
     int getCount(int id);

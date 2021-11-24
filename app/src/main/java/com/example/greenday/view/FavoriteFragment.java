@@ -11,20 +11,21 @@ import android.view.ViewGroup;
 
 import com.example.greenday.R;
 import com.example.greenday.databinding.FragmentTrackListBinding;
-import com.example.greenday.view.trackList.TrackAdapter;
-import com.example.greenday.viewmodel.FavoriteViewModel;
-import com.example.greenday.viewmodel.IntTrackListViewModel;
+import com.example.greenday.view.trackList.FavoriteAdapter;
+import com.example.greenday.viewmodel.TrackListViewModel;
 
 public class FavoriteFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        IntTrackListViewModel model = new ViewModelProvider(requireActivity()).get(FavoriteViewModel.class);
+        TrackListViewModel model = new ViewModelProvider(requireActivity()).get(TrackListViewModel.class);
+        model.getFavorites().clear();
+        model.loadFavorite();
 
         FragmentTrackListBinding binding = FragmentTrackListBinding.inflate(inflater, container, false);
-        binding.setTrackList(model.getList());
+        binding.setTrackList(model.getFavorites());
         binding.title.setText(R.string.main_menu_favorite);
-        binding.trackList.setAdapter(new TrackAdapter(model));
+        binding.trackList.setAdapter(new FavoriteAdapter(model));
 
         return binding.getRoot();
     }

@@ -11,20 +11,21 @@ import android.view.ViewGroup;
 
 import com.example.greenday.R;
 import com.example.greenday.databinding.FragmentTrackListBinding;
-import com.example.greenday.view.trackList.TrackAdapter;
-import com.example.greenday.viewmodel.IntTrackListViewModel;
+import com.example.greenday.view.trackList.TrackListAdapter;
 import com.example.greenday.viewmodel.TrackListViewModel;
 
 public class TrackListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        IntTrackListViewModel model = new ViewModelProvider(requireActivity()).get(TrackListViewModel.class);
+        TrackListViewModel model = new ViewModelProvider(requireActivity()).get(TrackListViewModel.class);
+        model.getTrackList().clear();
+        model.loadTrackList(0,20);
 
         FragmentTrackListBinding binding = FragmentTrackListBinding.inflate(inflater, container, false);
-        binding.setTrackList(model.getList());
+        binding.setTrackList(model.getTrackList());
         binding.title.setText(R.string.main_menu_track_list);
-        binding.trackList.setAdapter(new TrackAdapter(model));
+        binding.trackList.setAdapter(new TrackListAdapter(model));
 
         return binding.getRoot();
     }

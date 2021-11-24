@@ -9,19 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenday.databinding.ItemTrackBinding;
 import com.example.greenday.iTunes.Track;
-import com.example.greenday.viewmodel.IntTrackListViewModel;
+import com.example.greenday.viewmodel.TrackListViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
-public class TrackAdapter extends RecyclerView.Adapter<TrackViewHolder> {
+public class TrackListAdapter extends RecyclerView.Adapter<TrackViewHolder> implements Adapter {
 
     private final ObservableArrayList<Track> tracks;
-    private final IntTrackListViewModel model;
+    private final TrackListViewModel model;
     private int sizeBeforeUpdate;
 
-    public TrackAdapter(IntTrackListViewModel model) {
+    public TrackListAdapter(TrackListViewModel model) {
         this.model=model;
-        this.tracks = model.getList();
+        this.tracks = model.getTrackList();
     }
 
     @NotNull
@@ -34,10 +34,11 @@ public class TrackAdapter extends RecyclerView.Adapter<TrackViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull @NotNull TrackViewHolder holder, int position) {
         holder.setData(tracks.get(position));
-        if (position == getItemCount() - 10) model.load(getItemCount(), 20);
+        if (position == getItemCount() - 10) model.loadTrackList(getItemCount(), 20);
     }
 
-    public void updateTrack(){
+    @Override
+    public void datasetChanged() {
         this.notifyItemRangeInserted(sizeBeforeUpdate, tracks.size() - sizeBeforeUpdate);
         sizeBeforeUpdate = tracks.size();
     }

@@ -3,6 +3,7 @@ package com.example.greenday.repository;
 import android.util.Log;
 
 import androidx.databinding.ObservableArrayList;
+import androidx.databinding.ObservableList;
 
 import com.example.greenday.database.FavoriteDao;
 import com.example.greenday.database.FavoriteDatabase;
@@ -27,6 +28,10 @@ public class RepositoryImpl implements Repository { // 일단 메인에서 만�
         dao = FavoriteDatabase.getDB().favoriteDao();
         trackList = new ObservableArrayList<>();
         favorite = new ObservableArrayList<>();
+    }
+
+    public void changeFavorite(Track track){
+
     }
 
     @Override
@@ -56,12 +61,12 @@ public class RepositoryImpl implements Repository { // 일단 메인에서 만�
     }
 
     @Override
-    public void loadFavorites(int offset, int limit) {
+    public void loadFavorites() {
         new Thread() {
             @Override
             public void run() {
                 FavoriteDatabase.SERVICE.execute(() -> {
-                    String ids = dao.get(offset, limit).toString().replace("[", "").replace("]", "");
+                    String ids = dao.get().toString().replace("[", "").replace("]", "");
                     api.searchWithTrackId(ids)
                             .enqueue(new Callback<TrackSearchResult>() {
                                 @Override
