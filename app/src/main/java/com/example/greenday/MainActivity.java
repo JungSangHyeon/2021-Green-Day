@@ -7,6 +7,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.greenday.db.FavoriteDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FavoriteDatabase.init(this);
 
         // TODO 왠지 모르겠는데, 얘가 Fragment를 새로 만드네. 이전꺼 쓰는게 좋겠지?
         BottomNavigationView menu = this.findViewById(R.id.menu);

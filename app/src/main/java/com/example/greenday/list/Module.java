@@ -21,4 +21,8 @@ public class Module {
         ((TrackAdapter)recyclerView.getAdapter()).updateTrack();
     }
 
+    @BindingAdapter("changeFavorite")
+    public static void changeFavorite(RecyclerView recyclerView, ObservableArrayList<Track> tracks) {
+        ((TrackAdapter)recyclerView.getAdapter()).updateTrack();
+    }
 }

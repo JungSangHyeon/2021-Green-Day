@@ -8,4 +8,5 @@ import lombok.Setter;
 public class Track {
     private int trackId;
     private String artworkUrl100, trackName, collectionName, artistName;
+    private boolean favorite;
 }

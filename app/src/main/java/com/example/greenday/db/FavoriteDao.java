@@ -1,0 +1,24 @@
+package com.example.greenday.db;
+
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+
+import java.util.List;
+
+@Dao
+public interface FavoriteDao {
+
+    @Query("SELECT * FROM favorite LIMIT :limit OFFSET :offset")
+    List<Favorite> get(int offset, int limit);
+
+    @Query("SELECT COUNT(*) FROM favorite WHERE track_id = :id")
+    int getCount(int id);
+
+    @Insert
+    void insert(Favorite favorite);
+
+    @Delete
+    void delete(Favorite favorite);
+}
