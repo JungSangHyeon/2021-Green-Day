@@ -13,7 +13,6 @@ import java.util.concurrent.Executors;
 public abstract class FavoriteDatabase extends RoomDatabase {
 
     private static volatile FavoriteDatabase INSTANCE;
-    public static final ExecutorService SERVICE = Executors.newFixedThreadPool(4);
 
     public static void init(final Context context) {
         INSTANCE = Room.databaseBuilder(context.getApplicationContext(), FavoriteDatabase.class, "favorite")
@@ -22,6 +21,5 @@ public abstract class FavoriteDatabase extends RoomDatabase {
     }
 
     public static FavoriteDatabase getDB(){return INSTANCE;}
-
     public abstract FavoriteDao favoriteDao();
 }

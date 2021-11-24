@@ -13,14 +13,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * TODO
+ * 3. Network, Room ~ RX Java
  * 4. HILT
- * 5. Network RX Java
  * 5. 이쁜 UI
- *
- * ListAdapter를 사용해서 페이버릿 notifydatachange 안 부르게 하기
  *
  * 시간 남으면
  * 1. 화면 전환 할 때 Fragment 새로 안 만들고 계속 쓰는게 좋지 않을까? - 왜 Fra씨는 Launch Mode가 없지
+ * 2. ListAdapter를 사용해서 페이버릿 notifydatachange 안 부르게 하기 - tasklist도 더 깔끔하게
+ * 3. iTunes API 실행 할 때 마다 다른 값을 주고, 가끔 겹치는걸 주네
  */
 public class MainActivity extends AppCompatActivity {
 

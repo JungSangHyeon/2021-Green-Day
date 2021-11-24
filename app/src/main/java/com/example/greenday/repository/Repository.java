@@ -1,9 +1,9 @@
 package com.example.greenday.repository;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import androidx.databinding.ObservableArrayList;
-import androidx.databinding.ObservableList;
 
 import com.example.greenday.database.Favorite;
 import com.example.greenday.database.FavoriteDao;
@@ -11,24 +11,61 @@ import com.example.greenday.database.FavoriteDatabase;
 import com.example.greenday.iTunes.API;
 import com.example.greenday.iTunes.Network;
 import com.example.greenday.iTunes.Track;
-import com.example.greenday.iTunes.TrackSearchResult;
 
+import java.util.List;
+import java.util.concurrent.Callable;
+
+import io.reactivex.Observable;
+import io.reactivex.schedulers.Schedulers;
 import lombok.Getter;
-import retrofit2.Call;
-import retrofit2.Callback;
 
 @Getter
-public class Repository { // 일단 메인에서 만들어서 스태택주입
+@SuppressLint("CheckResult")
+public class Repository {
 
     private final API api;
     private final FavoriteDao dao;
-    private final ObservableArrayList<Track> trackList, favorite; // 둘이 연동 어캐 하누
+    private final ObservableArrayList<Track> trackList, favorite;
 
     public Repository() {
         api = Network.getInstance().create(API.class);
-        dao = FavoriteDatabase.getDB().favoriteDao();
+        dao = FavoriteDatabase.getDB().favoriteDao(); // 일단 메인에서 만들어서 스태택주입
         trackList = new ObservableArrayList<>();
         favorite = new ObservableArrayList<>();
+    }
+
+    public void loadTrackList(int offset) {
+        api.search("greenday", "song", offset, 20)
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                        trackSearchResult -> {
+                            for (Track track : trackSearchResult.getResults()) {
+                                track.setFavorite(dao.getCount(track.getTrackId()) != 0);
+                                trackList.add(track);
+                            }
+                        },
+                        throwable -> Log.e("FAIL", throwable.getMessage())
+                );
+    }
+
+    public void loadFavorites() {
+        dao.get()
+                .subscribeOn(Schedulers.io())
+                .subscribe(favorites -> getFavoriteAndLoad(favorites));
+    }
+    private void getFavoriteAndLoad(List<Favorite> favorites) {
+        String ids = favorites.toString().replace("[", "").replace("]", "");
+        api.searchWithTrackId(ids)
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                        trackSearchResult -> {
+                            for (Track track : trackSearchResult.getResults()) {
+                                track.setFavorite(true);
+                                favorite.add(track);
+                            }
+                        },
+                        throwable -> Log.e("FAIL", throwable.getMessage())
+                );
     }
 
     public void favoriteChange(Track track, boolean checked){
@@ -42,64 +79,11 @@ public class Repository { // 일단 메인에서 만들어서 스태택주입
             if(trackInFavorite!=null) favorite.remove(trackInFavorite);
         }
 
-        Favorite f = new Favorite();
-        f.trackId=track.getTrackId();
-        if(checked) FavoriteDatabase.SERVICE.execute(()->FavoriteDatabase.getDB().favoriteDao().insert(f));
-        else FavoriteDatabase.SERVICE.execute(()->FavoriteDatabase.getDB().favoriteDao().delete(f));
+        Favorite favorite = new Favorite();
+        favorite.trackId=track.getTrackId();
+        if(checked) dao.insert(favorite).subscribeOn(Schedulers.io()).subscribe();
+        else dao.delete(favorite).subscribeOn(Schedulers.io()).subscribe();
     }
-
-    public void loadTrackList(int offset) {
-        new Thread() {
-            @Override
-            public void run() {
-                api.search("greenday", "song", offset, 20)
-                        .enqueue(new Callback<TrackSearchResult>() {
-                            @Override
-                            public void onResponse(Call<TrackSearchResult> call, retrofit2.Response<TrackSearchResult> response) {
-                                for (Track track : response.body().getResults()) {
-                                    FavoriteDatabase.SERVICE.execute(() -> {
-                                        track.setFavorite(dao.getCount(track.getTrackId()) != 0);
-                                        trackList.add(track);
-                                    });
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<TrackSearchResult> call, Throwable t) {
-                                Log.e("FAIL", t.getMessage());
-                            }
-                        });
-            }
-        }.start();
-    }
-
-    public void loadFavorites() {
-        new Thread() {
-            @Override
-            public void run() {
-                FavoriteDatabase.SERVICE.execute(() -> {
-                    String ids = dao.get().toString().replace("[", "").replace("]", "");
-                    api.searchWithTrackId(ids)
-                            .enqueue(new Callback<TrackSearchResult>() {
-                                @Override
-                                public void onResponse(Call<TrackSearchResult> call, retrofit2.Response<TrackSearchResult> response) {
-                                    for (Track track : response.body().getResults()) {
-                                        track.setFavorite(true);
-                                        favorite.add(track);
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Call<TrackSearchResult> call, Throwable t) {
-                                    Log.e("FAIL", t.getMessage());
-                                }
-                            });
-                });
-
-            }
-        }.start();
-    }
-
     public Track find(ObservableArrayList<Track> list, int id){
         for(Track track : list){
             if(track.getTrackId()==id) return track;
