@@ -13,13 +13,11 @@ import com.example.greenday.iTunes.Network;
 import com.example.greenday.iTunes.Track;
 
 import java.util.List;
-import java.util.concurrent.Callable;
 
-import io.reactivex.Observable;
 import io.reactivex.schedulers.Schedulers;
-import lombok.Getter;
+import retrofit2.Retrofit;
 
-@Getter
+//@Getter
 @SuppressLint("CheckResult")
 public class Repository {
 
@@ -32,6 +30,15 @@ public class Repository {
         dao = FavoriteDatabase.getDB().favoriteDao(); // 일단 메인에서 만들어서 스태택주입
         trackList = new ObservableArrayList<>();
         favorite = new ObservableArrayList<>();
+    }
+
+
+    public ObservableArrayList<Track> getTrackList() {
+        return trackList;
+    }
+
+    public ObservableArrayList<Track> getFavorite() {
+        return favorite;
     }
 
     public void loadTrackList(int offset) {
