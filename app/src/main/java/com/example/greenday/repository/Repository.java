@@ -34,8 +34,10 @@ public class Repository {
                 .subscribe(
                         trackSearchResult -> {
                             for (Track track : trackSearchResult.getResults()) {
-                                track.setFavorite(dao.getCount(track.getTrackId()) != 0);
-                                trackList.add(track);
+                                if(find(trackList, track.getTrackId())==null){ // API가 중복 값 줌
+                                    track.setFavorite(dao.getCount(track.getTrackId()) != 0);
+                                    trackList.add(track);
+                                }
                             }
                         },
                         throwable -> Log.e("FAIL", throwable.getMessage())

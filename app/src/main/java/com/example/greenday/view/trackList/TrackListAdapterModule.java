@@ -18,7 +18,6 @@ public class TrackListAdapterModule {
 
     @BindingAdapter("loadImage")
     public static void loadImage(ImageView imageView, String url) {
-//        Glide.with(imageView).load(url).centerCrop().into(imageView);
         int radius = (int) imageView.getContext().getResources().getDimension(R.dimen.artwork_rounding_radius);
         Glide.with(imageView).load(url).centerCrop()
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(radius))).into(imageView);
