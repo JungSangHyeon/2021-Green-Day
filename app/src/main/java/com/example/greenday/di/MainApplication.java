@@ -1,4 +1,4 @@
-package com.example.greenday;
+package com.example.greenday.di;
 
 import android.app.Application;
 
