@@ -26,8 +26,6 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * TODO
  *
- * Splash Activity 만들까
- *
  * 레포지토리가 좀 복잡한데 데이터 소스 뽑을까
  *
  * iTunes API 실행 할 때 마다 다른 값을 주고, 가끔 겹치는걸 주네 - 정렬시켜서 가져오면 될라나
