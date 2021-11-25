@@ -6,6 +6,6 @@
         android:title="@string/main_menu_track_list" />
     <item
         android:id="@+id/favoriteFragment"
-        android:icon="@drawable/star"
+        android:icon="@drawable/round_star"
         android:title="@string/main_menu_favorite"/>
 </menu>
