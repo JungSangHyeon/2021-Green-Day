@@ -26,6 +26,8 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * TODO
  *
+ * 중복 트랙 에러 처리한거, 마지막 녀석의 아이디만 모아놓은걸로 처리하게 바꺼ㅜ
+ *
  * ListAdapter가 더 좋아보이니 적용
  * 아이템 삭제 애니메이션 추가
  * Diff로 notifydatachange안 부르게

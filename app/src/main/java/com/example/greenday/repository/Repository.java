@@ -10,6 +10,7 @@ import com.example.greenday.database.FavoriteDao;
 import com.example.greenday.iTunes.ItunesApi;
 import com.example.greenday.iTunes.Track;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.schedulers.Schedulers;
@@ -20,12 +21,14 @@ public class Repository {
     private final ItunesApi itunesApi;
     private final FavoriteDao dao;
     private final ObservableArrayList<Track> trackList, favorite;
+    private ArrayList<Integer> beforeLoadTrackIds;
 
     public Repository(FavoriteDao dao, ItunesApi itunesApi) {
         this.itunesApi = itunesApi;
         this.dao=dao;
         trackList = new ObservableArrayList<>();
         favorite = new ObservableArrayList<>();
+        beforeLoadTrackIds = new ArrayList<>();
     }
 
     public void loadTrackList(int offset) {
@@ -33,12 +36,15 @@ public class Repository {
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         trackSearchResult -> {
+                            ArrayList<Integer> trackIds = new ArrayList<>();
                             for (Track track : trackSearchResult.getResults()) {
-                                if(find(trackList, track.getTrackId())==null){ // API가 중복 값 줌
+                                if(!beforeLoadTrackIds.contains(track.getTrackId())){
                                     track.setFavorite(dao.getCount(track.getTrackId()) != 0);
                                     trackList.add(track);
+                                    trackIds.add(track.getTrackId());
                                 }
                             }
+                            beforeLoadTrackIds = trackIds;
                         },
                         throwable -> Log.e("FAIL", throwable.getMessage())
                 );

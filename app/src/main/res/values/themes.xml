@@ -17,6 +17,7 @@
     <style name="Theme.GreenDay.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
     <!--    <item name="android:navigationBarColor" >@color/black_light</item>-->
 
