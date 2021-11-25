@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.greenday.iTunes.Track;
 
-public class TrackListModule {
+public class TrackListAdapterModule {
 
     @BindingAdapter("loadImage")
     public static void loadImage(ImageView imageView, String url) {

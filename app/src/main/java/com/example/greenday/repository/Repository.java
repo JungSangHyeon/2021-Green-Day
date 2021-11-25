@@ -7,42 +7,29 @@ import androidx.databinding.ObservableArrayList;
 
 import com.example.greenday.database.Favorite;
 import com.example.greenday.database.FavoriteDao;
-import com.example.greenday.database.FavoriteDatabase;
-import com.example.greenday.iTunes.API;
-import com.example.greenday.iTunes.Network;
+import com.example.greenday.iTunes.ItunesApi;
 import com.example.greenday.iTunes.Track;
 
 import java.util.List;
 
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Retrofit;
 
-//@Getter
 @SuppressLint("CheckResult")
 public class Repository {
 
-    private final API api;
+    private final ItunesApi itunesApi;
     private final FavoriteDao dao;
     private final ObservableArrayList<Track> trackList, favorite;
 
-    public Repository() {
-        api = Network.getInstance().create(API.class);
-        dao = FavoriteDatabase.getDB().favoriteDao(); // 일단 메인에서 만들어서 스태택주입
+    public Repository(FavoriteDao dao, ItunesApi itunesApi) {
+        this.itunesApi = itunesApi;
+        this.dao=dao;
         trackList = new ObservableArrayList<>();
         favorite = new ObservableArrayList<>();
     }
 
-
-    public ObservableArrayList<Track> getTrackList() {
-        return trackList;
-    }
-
-    public ObservableArrayList<Track> getFavorite() {
-        return favorite;
-    }
-
     public void loadTrackList(int offset) {
-        api.search("greenday", "song", offset, 20)
+        itunesApi.search("greenday", "song", offset, 20)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         trackSearchResult -> {
@@ -62,7 +49,7 @@ public class Repository {
     }
     private void getFavoriteAndLoad(List<Favorite> favorites) {
         String ids = favorites.toString().replace("[", "").replace("]", "");
-        api.searchWithTrackId(ids)
+        itunesApi.searchWithTrackId(ids)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         trackSearchResult -> {
@@ -96,5 +83,12 @@ public class Repository {
             if(track.getTrackId()==id) return track;
         }
         return null;
+    }
+
+    public ObservableArrayList<Track> getTrackList() {
+        return trackList;
+    }
+    public ObservableArrayList<Track> getFavorite() {
+        return favorite;
     }
 }

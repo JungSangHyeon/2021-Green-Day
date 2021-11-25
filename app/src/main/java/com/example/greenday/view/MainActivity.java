@@ -1,15 +1,24 @@
 package com.example.greenday.view;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.greenday.R;
+import com.example.greenday.database.Favorite;
 import com.example.greenday.database.FavoriteDatabase;
+import com.example.greenday.viewmodel.TrackListViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * TODO
@@ -21,15 +30,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
  * 2. ListAdapter를 사용해서 페이버릿 notifydatachange 안 부르게 하기 - tasklist도 더 깔끔하게
  * 3. iTunes API 실행 할 때 마다 다른 값을 주고, 가끔 겹치는걸 주네 - 정렬시켜서 가져오면 될라나
  * 4. 개발하다 보니, 자료도 죄다 코틀린이고, 롬복이랑 KAPT씨도 호환 안 되는데 Kotlin으로 갈아엎을까
+ * 5. 레포지토리가 좀 복잡한데 데이터 소스 뽑을까
  */
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        FavoriteDatabase.init(this);
 
         BottomNavigationView menu = this.findViewById(R.id.menu);
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);

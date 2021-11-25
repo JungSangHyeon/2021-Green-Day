@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStore;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,9 @@ import com.example.greenday.databinding.FragmentTrackListBinding;
 import com.example.greenday.view.trackList.FavoriteAdapter;
 import com.example.greenday.viewmodel.TrackListViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class FavoriteFragment extends Fragment {
 
     @Override

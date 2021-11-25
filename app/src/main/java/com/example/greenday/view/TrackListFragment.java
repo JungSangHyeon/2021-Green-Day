@@ -16,6 +16,9 @@ import com.example.greenday.databinding.FragmentTrackListBinding;
 import com.example.greenday.view.trackList.TrackListAdapter;
 import com.example.greenday.viewmodel.TrackListViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class TrackListFragment extends Fragment {
 
     @Override

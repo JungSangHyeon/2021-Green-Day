@@ -2,8 +2,6 @@ package com.example.greenday.iTunes;
 
 import java.util.ArrayList;
 
-//@Getter
-//@Setter
 public class TrackSearchResult {
     private int resultCount;
     private ArrayList<Track> results;
@@ -11,15 +9,12 @@ public class TrackSearchResult {
     public int getResultCount() {
         return resultCount;
     }
-
     public void setResultCount(int resultCount) {
         this.resultCount = resultCount;
     }
-
     public ArrayList<Track> getResults() {
         return results;
     }
-
     public void setResults(ArrayList<Track> results) {
         this.results = results;
     }

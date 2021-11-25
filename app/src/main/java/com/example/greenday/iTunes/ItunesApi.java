@@ -4,7 +4,7 @@ import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface API {
+public interface ItunesApi {
 
     @GET("/search?") // Ex) https://itunes.apple.com/search?term=greenday&entity=song&offset=0&limit=20
     Single<TrackSearchResult> search (
