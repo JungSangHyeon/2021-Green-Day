@@ -35,9 +35,7 @@ public class Track {
     public void setArtistName(String artistName) {
         this.artistName = artistName;
     }
-    public boolean isFavorite() {
-        return favorite;
-    }
+    public boolean isFavorite() { return favorite; }
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
     }

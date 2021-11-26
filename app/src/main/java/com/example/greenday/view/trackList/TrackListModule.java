@@ -11,10 +11,9 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.greenday.R;
 import com.example.greenday.iTunes.Track;
+import com.example.greenday.view.trackList.listAdapter.Adapter;
 
-import static com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop;
-
-public class TrackListAdapterModule {
+public class TrackListModule {
 
     @BindingAdapter("loadImage")
     public static void loadImage(ImageView imageView, String url) {

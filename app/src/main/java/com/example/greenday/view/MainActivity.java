@@ -30,6 +30,8 @@ import io.reactivex.schedulers.Schedulers;
  * 아이템 삭제 애니메이션 추가
  * Diff로 notifydatachange안 부르게
  *
+ * 여기저기 Interface 추가
+ *
  * Room에서 Livedata사용해서 Favorite Change Event 발생->값 변경->변경 감지->기타 처리 가 좋지 않을까
  *
  * NavigationUI는 여러 설정을 자동으로 처리해주는 만큼, 커스텀이 안 되니(Animation, Frag 재사용...) 변경
