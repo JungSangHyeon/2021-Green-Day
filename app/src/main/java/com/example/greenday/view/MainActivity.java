@@ -26,8 +26,6 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * TODO
  *
- * 좋아요 한거 없으면 없어요! 띄우기
- *
  * Room에서 Livedata사용해서 Favorite Change Event 발생->값 변경->변경 감지->기타 처리 가 좋지 않을까
  *
  * NavigationUI는 여러 설정을 자동으로 처리해주는 만큼, 커스텀이 안 되니(Animation, Frag 재사용...) 변경

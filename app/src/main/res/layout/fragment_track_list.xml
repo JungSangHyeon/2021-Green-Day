@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <import type="androidx.databinding.ObservableArrayList" />
 
         <import type="com.example.greenday.iTunes.Track" />
@@ -52,6 +54,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/list_empty"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_normal"
+            android:visibility="@{trackList.size()==0? View.VISIBLE : View.GONE }"
+            app:layout_constraintBottom_toBottomOf="@+id/trackList"
+            app:layout_constraintEnd_toEndOf="@+id/trackList"
+            app:layout_constraintStart_toStartOf="@+id/trackList"
+            app:layout_constraintTop_toTopOf="@+id/trackList" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

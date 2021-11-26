@@ -10,6 +10,9 @@
     <string name="main_menu_track_list">Track List</string>
     <string name="main_menu_favorite">Favorite</string>
 
+    <!--  Track List  -->
+    <string name="list_empty">리스트가 비어있네요!\n좋아요! 더 많이 채울 수 있겠어요!</string>
+
     <!--  Item Track  -->
     <string name="artwork">Artwork</string>
 </resources>
