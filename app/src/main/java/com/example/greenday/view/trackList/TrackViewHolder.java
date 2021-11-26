@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.greenday.R;
 import com.example.greenday.databinding.ItemTrackBinding;
-import com.example.greenday.iTunes.Track;
+import com.example.greenday.remoteDataSource.Track;
 import com.example.greenday.viewmodel.TrackListViewModel;
 
 public class TrackViewHolder extends RecyclerView.ViewHolder {
@@ -21,7 +21,7 @@ public class TrackViewHolder extends RecyclerView.ViewHolder {
         this.binding=binding;
         this.model=model;
 
-        animator = AnimatorInflater.loadAnimator(itemView.getContext(), R.animator.favorite_animation);
+        animator = AnimatorInflater.loadAnimator(itemView.getContext(), R.animator.button_favorite_animation);
         animator.setTarget(binding.favorite);
     }
 

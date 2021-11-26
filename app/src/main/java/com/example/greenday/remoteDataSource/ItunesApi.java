@@ -1,4 +1,4 @@
-package com.example.greenday.iTunes;
+package com.example.greenday.remoteDataSource;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;

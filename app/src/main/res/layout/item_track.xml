@@ -7,7 +7,7 @@
 
         <variable
             name="track"
-            type="com.example.greenday.iTunes.Track" />
+            type="com.example.greenday.remoteDataSource.Track" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -86,9 +86,9 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
+            style="@style/SelectableItemBackground"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            style="@style/SelectableItemBackground"
             android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"

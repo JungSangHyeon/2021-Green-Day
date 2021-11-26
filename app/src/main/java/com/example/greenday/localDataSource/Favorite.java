@@ -1,4 +1,4 @@
-package com.example.greenday.database;
+package com.example.greenday.localDataSource;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

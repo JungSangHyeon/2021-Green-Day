@@ -2,10 +2,10 @@ package com.example.greenday.di;
 
 import android.content.Context;
 
-import com.example.greenday.database.FavoriteDao;
-import com.example.greenday.database.FavoriteDatabase;
-import com.example.greenday.iTunes.ItunesApi;
-import com.example.greenday.iTunes.ItunesApiCreator;
+import com.example.greenday.localDataSource.FavoriteDao;
+import com.example.greenday.localDataSource.FavoriteDatabase;
+import com.example.greenday.remoteDataSource.ItunesApi;
+import com.example.greenday.remoteDataSource.ItunesApiCreator;
 import com.example.greenday.repository.Repository;
 import com.example.greenday.repository.RepositoryImpl;
 
@@ -16,7 +16,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext;
 
 @dagger.Module
 @InstallIn(ViewModelComponent.class)
-public class DataSourceModule {
+public class RepositoryModule {
 
     @Provides
     public static Repository provideRepository(@ApplicationContext Context context){

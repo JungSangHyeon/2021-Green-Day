@@ -1,8 +1,8 @@
 package com.example.greenday;
 
-import com.example.greenday.iTunes.ItunesApi;
-import com.example.greenday.iTunes.ItunesApiCreator;
-import com.example.greenday.iTunes.Track;
+import com.example.greenday.remoteDataSource.ItunesApi;
+import com.example.greenday.remoteDataSource.ItunesApiCreator;
+import com.example.greenday.remoteDataSource.Track;
 
 import org.junit.Test;
 

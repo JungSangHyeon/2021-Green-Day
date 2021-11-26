@@ -2,7 +2,7 @@ package com.example.greenday.repository;
 
 import androidx.databinding.ObservableArrayList;
 
-import com.example.greenday.iTunes.Track;
+import com.example.greenday.remoteDataSource.Track;
 
 public interface Repository {
 

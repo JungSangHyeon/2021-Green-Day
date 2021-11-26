@@ -3,7 +3,7 @@ package com.example.greenday.view.trackList.listAdapter;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 
-import com.example.greenday.iTunes.Track;
+import com.example.greenday.remoteDataSource.Track;
 
 public class TrackDiffUtil extends DiffUtil.ItemCallback<Track>{
 

@@ -1,4 +1,4 @@
-package com.example.greenday.iTunes;
+package com.example.greenday.remoteDataSource;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

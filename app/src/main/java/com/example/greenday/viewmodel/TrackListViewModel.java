@@ -3,11 +3,8 @@ package com.example.greenday.viewmodel;
 import androidx.databinding.ObservableArrayList;
 import androidx.lifecycle.ViewModel;
 
-import com.example.greenday.database.FavoriteDao;
-import com.example.greenday.iTunes.ItunesApi;
-import com.example.greenday.iTunes.Track;
+import com.example.greenday.remoteDataSource.Track;
 import com.example.greenday.repository.Repository;
-import com.example.greenday.repository.RepositoryImpl;
 
 import javax.inject.Inject;
 

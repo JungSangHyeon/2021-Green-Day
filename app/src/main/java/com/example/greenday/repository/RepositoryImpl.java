@@ -5,10 +5,10 @@ import android.util.Log;
 
 import androidx.databinding.ObservableArrayList;
 
-import com.example.greenday.database.Favorite;
-import com.example.greenday.database.FavoriteDao;
-import com.example.greenday.iTunes.ItunesApi;
-import com.example.greenday.iTunes.Track;
+import com.example.greenday.localDataSource.Favorite;
+import com.example.greenday.localDataSource.FavoriteDao;
+import com.example.greenday.remoteDataSource.ItunesApi;
+import com.example.greenday.remoteDataSource.Track;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +55,7 @@ public class RepositoryImpl implements Repository{
     public void loadFavorites() {
         dao.get()
                 .subscribeOn(Schedulers.io())
-                .subscribe(favorites -> getFavoriteAndLoad(favorites));
+                .subscribe(this::getFavoriteAndLoad);
     }
     private void getFavoriteAndLoad(List<Favorite> favorites) {
         String ids = favorites.toString().replace("[", "").replace("]", "");

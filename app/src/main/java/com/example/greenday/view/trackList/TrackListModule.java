@@ -4,14 +4,14 @@ import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableArrayList;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.greenday.R;
-import com.example.greenday.iTunes.Track;
-import com.example.greenday.view.trackList.listAdapter.Adapter;
+import com.example.greenday.remoteDataSource.Track;
 
 public class TrackListModule {
 
@@ -24,6 +24,6 @@ public class TrackListModule {
 
     @BindingAdapter("loadData")
     public static void loadData(RecyclerView recyclerView, ObservableArrayList<Track> tracks) {
-        ((Adapter)recyclerView.getAdapter()).datasetChanged();
+        ((ListAdapter<Track, TrackViewHolder>)recyclerView.getAdapter()).submitList(tracks);
     }
 }
