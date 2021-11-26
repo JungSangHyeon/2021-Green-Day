@@ -26,11 +26,7 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * TODO
  *
- * ListAdapter가 더 좋아보이니 적용
- * 아이템 삭제 애니메이션 추가
- * Diff로 notifydatachange안 부르게
- *
- * 여기저기 Interface 추가
+ * 좋아요 한거 없으면 없어요! 띄우기
  *
  * Room에서 Livedata사용해서 Favorite Change Event 발생->값 변경->변경 감지->기타 처리 가 좋지 않을까
  *

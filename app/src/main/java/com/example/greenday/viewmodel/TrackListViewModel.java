@@ -7,6 +7,7 @@ import com.example.greenday.database.FavoriteDao;
 import com.example.greenday.iTunes.ItunesApi;
 import com.example.greenday.iTunes.Track;
 import com.example.greenday.repository.Repository;
+import com.example.greenday.repository.RepositoryImpl;
 
 import javax.inject.Inject;
 
@@ -18,8 +19,8 @@ public class TrackListViewModel extends ViewModel {
     private final Repository repository;
 
     @Inject
-    public TrackListViewModel(FavoriteDao dao, ItunesApi itunesApi){
-        repository = new Repository(dao, itunesApi);
+    public TrackListViewModel(Repository repository){
+        this.repository = repository;
         trackList = repository.getTrackList();
         favorites = repository.getFavorite();
         loadTrackList(0);
