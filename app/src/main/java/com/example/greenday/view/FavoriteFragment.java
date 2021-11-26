@@ -31,6 +31,7 @@ public class FavoriteFragment extends Fragment {
         binding.trackList.setAdapter(new FavoriteAdapter(model));
         binding.trackList.setLayoutManager(
                 new WrapContentLinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        binding.emptyListText.setText(R.string.list_empty);
         return binding.getRoot();
     }
 }
