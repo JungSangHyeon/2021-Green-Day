@@ -1,6 +1,6 @@
 # 2021-Green-Day
 
-요약 : iTunes API를 통해 Green Day의 노래를 보여줍니다! 좋아하는 노래는 저장하구요.
+요약 : iTunes API를 통해 Green Day의 노래를 보여줍니다! 좋아하는 노래는 저장하구요. 별은 빛나구요.
 
 실행 영상 : https://www.youtube.com/watch?v=pHAQYcNAZq0
 
